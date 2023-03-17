@@ -4,6 +4,8 @@ const Navbar = () => {
   return (
 <>
 <div className="navbar">
+
+
   <div className="">
    <input className='h-text' type="text" placeholder='Search 8,0000 tutorials' />
   </div>
@@ -13,10 +15,10 @@ const Navbar = () => {
   <div className="right">
   <nav>
   <ul className='btn'>
-  <Link to="/register">
+  <Link  className='btn-1' to="/register">
       Sign-In
-    </Link>
-    <Link to="/Bye">
+    </Link >
+    <Link className='btn-2' to="/Bye">
       Menu
     </Link>
     

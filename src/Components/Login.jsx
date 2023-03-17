@@ -5,6 +5,12 @@ import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
+  useEffect(() => {
+    return () => {
+      // Code to run when the component is unmounted
+      toast("registration")
+    };
+  }, [])
   const [cookies] = useCookies([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -14,6 +20,7 @@ function Login() {
     }
     else{
       navigate("/login")
+      
     }
   }, [cookies, navigate]);
 
@@ -24,7 +31,7 @@ function Login() {
     });
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
+    try {      
       const { data } = await axios.post(
         "http://localhost:4000/talentbox/login",
         {
@@ -35,8 +42,9 @@ function Login() {
       if (data) {
         console.log(data)
         if (data.errors) {
+          
           const { email, password } = data.errors;
-          if (email) generateError(email);
+          if (email) toast("");
           else if (password) generateError(password);
         } else {
           navigate("/dashboard");
@@ -44,10 +52,13 @@ function Login() {
       }
     } catch (ex) {
       console.log(ex);
+
     }
+    
   };
   return (
     <div className="container">
+
       <h2>Login to your Account</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>

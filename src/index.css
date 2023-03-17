@@ -126,16 +126,17 @@ height: 22px !important;
   color: #ccc;
 }
 .h-text{
+  background-color: #0a0a23;
 height: 18px;
 width: 300px;;
 padding: 0;
+border: none;
 margin: 0;
 }
 .h-text:focus{
 outline: none;
 }
 .h-text::placeholder{
-color: white;
 background-color: rgb(59,59,79);
 outline: none;
 border: none;
@@ -193,7 +194,16 @@ border: none;
 .mbutton{
   padding:5px 30px 5px 30px;
   margin-top:6% ;
-margin-left:20% ;
+margin-left:0;
+background-color: #feac32;
+width: 100%;
+background-image: linear-gradient(#fecc4c,#ffac33);
+border-color: #feac32;
+border-width: 3px;
+color: #0a0a23!important;
+font-family: monospace;
+white-space: none;
+
 }
 
 /* LOGIN-PAGE */
@@ -336,3 +346,38 @@ background-color: #D0D0D5;
   align-items: center;
   gap: 15px;
 }
+
+.btn-1{
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c,#ffac33);
+  border-color: #feac32;
+  border-width: 3px;
+  color: #0a0a23!important;
+  white-space: pre-line;
+  padding: 6px;
+  margin: 40px;
+  border: 1px solid #feac47;
+  font-family: monospace;
+  text-decoration: none;
+}
+
+.btn-2{
+  background-color: #0A0A23;
+  color: white;
+  background-image: linear-gradient(#0A0A23,#0A0A23);
+  border-color: white;
+  border-width: 3px;
+
+  white-space: pre-line;
+  padding: 6px 12px;
+  margin: 40px;
+  border: 1px solid ;
+  font-family: monospace;
+  text-decoration: none;
+  margin-left: 0px;
+margin-right: 60px;
+}
+
+
+
+

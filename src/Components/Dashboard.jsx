@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -6,6 +6,28 @@ import { toast, ToastContainer } from "react-toastify";
 // import CourseList from "./Courses";
 
 export default function Dashboard() {
+
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+    .get("http://localhost:4000/talentbox/getDashboardContent")
+    .then(function (response) {
+      let info=response.data.data
+      // console.log(response.data);
+      // const data = JSON.parse(response.data.data);
+           setData(info);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  
+    // axios.get('/api/data').then(response => {
+    //   setData(response.data);
+    // });
+  }, []);
+
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies(["jwtToken"]);
   useEffect(() => {
@@ -31,9 +53,17 @@ export default function Dashboard() {
         removeAllCookies();
         navigate("/login");
       })
+
+      
       .catch(function (error) {
         console.log(error);
       });
+
+    //  http://localhost:4000/talentbox/getDashboardContent
+
+  
+
+
   };
   return (
     <>
@@ -67,9 +97,15 @@ export default function Dashboard() {
                               class="btn link-btn btn-lg"
                               href="/learn/data-visualization/"
                             >
-                              <div className="sbutton">
-                                Data Visualization Certification
-                              </div>
+                              
+                              <div className="">
+      {data.map(item => (
+        <div key={item.id}>
+          <h2>{item.title}</h2>
+          <p>{item.age}</p>
+        </div>
+      ))}
+    </div>
                             </a>
                           </div>
                         </Link>

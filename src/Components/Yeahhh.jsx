@@ -25,8 +25,9 @@ const Page1 = () => {
     <p className='iconp1'>Spotify</p>
     <p className='iconp1'>amazon</p>
       </div>
+     
       <Link to='/register'>
-      <button className='mbutton'><h3> Get started (it's free)</h3></button>
+      <button className='mbutton'> <h3> Get started (it's free)</h3></button>
       </Link>
     </div>
     </div>

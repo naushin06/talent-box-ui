@@ -27,7 +27,7 @@ const Page1 = () => {
       </div>
      
       <Link to='/register'>
-      <button className='mbutton'> <h3> Get started (it's free)</h3></button>
+      <button className='mbutton'> <h3 className='main-btn'> Get started (it's free)</h3></button>
       </Link>
     </div>
     </div>

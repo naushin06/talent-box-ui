@@ -20,7 +20,6 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        // `${apiBaseURL}/register`,
         "http://localhost:4000/talentbox/register",
         {
           ...values,
@@ -30,8 +29,11 @@ const Register = () => {
           mode: 'cors'
         },
       );
+
+
       if (data) {
         console.log(data);
+        console.log(data.errors);
         if (data.errors) {
           const { name, email, password } = data.errors;
           if (name) {
@@ -42,7 +44,13 @@ const Register = () => {
             generateError(password);
           }
         } else {
-          navigate("/login");
+
+          toast(`registration successfull , please log-in`)
+           
+            setTimeout(() => {
+
+              navigate("/login"); },  3000); // Wait for 2 seconds before navigating
+         
         }
       }
     } catch (err) {
@@ -67,6 +75,7 @@ const Register = () => {
               name="name"
               type="text"
               placeholder="Name"
+              required
               onChange={(e) => {
                 setValues({ ...values, [e.target.name]: e.target.value });
               }}
@@ -78,6 +87,7 @@ const Register = () => {
             <input
               name="email"
               type="email"
+              required
               placeholder="email"
               onChange={(e) => {
                 setValues({ ...values, [e.target.name]: e.target.value });
@@ -91,6 +101,7 @@ const Register = () => {
               name="password"
               type="password"
               placeholder="Password"
+              required
               onChange={(e) =>
                 setValues({ ...values, [e.target.name]: e.target.value })
               }

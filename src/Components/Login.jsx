@@ -5,25 +5,26 @@ import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
-  useEffect(() => {
-    return () => {
-      // Code to run when the component is unmounted
-      toast("registration")
-    };
-  }, [])
+
   const [cookies] = useCookies([]);
   const navigate = useNavigate();
+
+
   useEffect(() => {
-  console.log(cookies)
-    if (cookies.jwt) {
+
+        console.log(document.cookie);
+    if (document.cookie) {
       navigate("/dashboard");
     }
     else{
+     for(let i=0;i<0;i++){
+     }
       navigate("/login")
-      
     }
   }, [cookies, navigate]);
 
+ 
+  
   const [values, setValues] = useState({ email: "", password: "" });
   const generateError = (error) =>
     toast.error(error, {
@@ -40,21 +41,25 @@ function Login() {
         { withCredentials: true }
       );
       if (data) {
-        console.log(data)
         if (data.errors) {
-          
-          const { email, password } = data.errors;
-          if (email) toast("");
-          else if (password) generateError(password);
+          console.log("yredh");
+          console.log(data.errors);
+          const { name, email, password } = data.errors;
+          if (name) {
+            generateError(name);
+          } else if (email) {
+            generateError(email);
+          } else if (password) {
+            generateError(password);
+          }
         } else {
           navigate("/dashboard");
         }
       }
-    } catch (ex) {
-      console.log(ex);
+    } catch (err) {
+      console.log(err);
 
     }
-    
   };
   return (
     <div className="container">
@@ -66,7 +71,8 @@ function Login() {
           <input
             type="text"
             name="email"
-            placeholder="Email"
+            required
+            placeholder="UserName or Email"
             onChange={(e) =>
               setValues({ ...values, [e.target.name]: e.target.value })
             }
@@ -76,6 +82,7 @@ function Login() {
           <label htmlFor="password">Password</label>
           <input
             type="password"
+            required
             placeholder="Password"
             name="password"
             onChange={(e) =>

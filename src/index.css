@@ -267,7 +267,11 @@ white-space: nowrap;
     width: 970px;
 }
 }
-
+@media (max-width:1350px){
+  .main-btn {
+      font-size: 0.9rem;
+  }
+  }
 @media (min-width: 768px)
 {
 .container {
@@ -379,5 +383,11 @@ margin-right: 60px;
 }
 
 
-
+.items{
+  background-color: #D0D0D5;
+  white-space:unset ;
+  list-style: none;
+  margin: 10px;
+  border: 3px solid red;
+}
 

@@ -1,70 +1,121 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import {cookie,useCookies} from "react-cookie";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 // import CourseList from "./Courses";
 
 export default function Dashboard() {
 
+  const navigate=useNavigate();
 
-  const [data, setData] = useState([]);
+
+  const [ver, setVer] = useState(null);
+
+  async function fetchData() {
+    const response = await axios.get('https://example.com/api/data');
+    setVer(response.data);
+  }
+
+
+ const [cookies,setCookie, removeCookie] = useCookies([]);
+    useEffect(()=>{
+
+     
+     
+     
+      const verifyUser = async () => {
+        if (!cookies) {
+          navigate("/login");
+        } else {
+        
+          const data = await axios.get(
+            "http://localhost:4000/talentbox/welcome",
+            {},
+            {
+              withCredentials: true,
+            }
+           
+          )
+          console.log(data);
+        
+          if (!data.status) {
+            removeCookie("jwtToken");
+            navigate("/login");
+          } else
+          console.log("hii")
+            // toast.error(`Hi`, {
+            //   theme: "dark",
+            // });
+        }
+      };
+      verifyUser();
+      console.log(cookies.jwtToken)
+
+  },[cookies,navigate,removeCookie])
+
+
+
+
+ const [data, setData] = useState([]);
   useEffect(() => {
+   
     axios
     .get("http://localhost:4000/talentbox/getDashboardContent")
     .then(function (response) {
       let info=response.data.data
-      // console.log(response.data);
-      // const data = JSON.parse(response.data.data);
            setData(info);
     })
     .catch(function (error) {
       console.log(error);
     });
-  
-  
-    // axios.get('/api/data').then(response => {
-    //   setData(response.data);
-    // });
+ 
   }, []);
 
-  const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies(["jwtToken"]);
-  useEffect(() => {
-    const verifyUser = async () => {
-      if (!cookies["jwtToken"]) {
-        console.log("Cookies:::", cookies);
-        navigate("/dashboard");
-      } else {
-        navigate("/register");
-      }
-    };
-    verifyUser();
-  }, [cookies, navigate, removeCookie]);
 
-  const removeAllCookies = () => {
-    removeCookie('jwtToken', { path: '/talentbox' });
-  };
+ 
+  
   const logOut = () => {
-    axios
-      .get("http://localhost:4000/talentbox/logout")
-      .then(function (response) {
-        console.log(response.data);
-        removeAllCookies();
-        navigate("/login");
-      })
+    
+let cookieValue = null;
 
-      
-      .catch(function (error) {
-        console.log(error);
-      });
+if(cookies){
+  axios.get("http://localhost:4000/talentbox/logout").then(function(response){
+   try{
+    document.cookie = `jwtTokens=${response.name.token}; SameSite=None; Secure`
+    
+   }catch(err){
+    console.log(err.message);
+   }
+  
+removeCookie('jwtToken')
 
-    //  http://localhost:4000/talentbox/getDashboardContent
+  })
+}
+navigate('/register');
+
+
+
+
+ 
 
   
-
+    
 
   };
+
+
+
+  const itemList = data.map(item => (
+
+    console.log(item),
+    console.log("loii"),
+    <div key={item.id}>
+    
+      <p>{item.name}</p>
+    </div>
+
+ ));
   return (
     <>
       <div className="main-page">
@@ -88,6 +139,26 @@ export default function Dashboard() {
                       </footer>
                     </span>
                   </blockquote>
+
+                  {
+    
+
+
+    data.map(item => (
+      
+
+       <>
+   
+            
+        { <div className="items" key={item.id}>
+         
+        <h2>{item.title}({item.age})</h2>
+     
+      </div> } 
+               </>
+     
+    ))}
+{/*                   
                   <div className="map-ui">
                     <ul>
                       <li>
@@ -98,20 +169,12 @@ export default function Dashboard() {
                               href="/learn/data-visualization/"
                             >
                               
-                              <div className="">
-      {data.map(item => (
-        <div key={item.id}>
-          <h2>{item.title}</h2>
-          <p>{item.age}</p>
-        </div>
-      ))}
-    </div>
                             </a>
                           </div>
                         </Link>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

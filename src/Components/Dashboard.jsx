@@ -20,10 +20,6 @@ export default function Dashboard() {
 
  const [cookies,setCookie, removeCookie] = useCookies([]);
     useEffect(()=>{
-
-     
-     
-     
       const verifyUser = async () => {
         if (!cookies) {
           navigate("/login");
@@ -94,28 +90,10 @@ removeCookie('jwtToken')
 }
 navigate('/register');
 
-
-
-
- 
-
-  
-    
-
   };
 
 
 
-  const itemList = data.map(item => (
-
-    console.log(item),
-    console.log("loii"),
-    <div key={item.id}>
-    
-      <p>{item.name}</p>
-    </div>
-
- ));
   return (
     <>
       <div className="main-page">
@@ -126,62 +104,68 @@ navigate('/register');
                 <h1 class="big-heading" data-test-label="landing-header">
                   Learn to code — for free.
                 </h1>
-                <div className="space"> </div>
+
                 <div className="text-center quote-partial">
                   <blockquote class="blockquote">
                     <span>
                       <q>
                         The question of whether computers can think is like the
-                        question of whether submarines can swim.
+                        question of whether submarines can swim."<br></br>
+                       
                       </q>
-                      <footer class="quote-author blockquote-footer">
+                    
+                    </span>
+                   <footer class="quote-author blockquote-footer">
                         <cite>E.W. Dijkstra</cite>
                       </footer>
-                    </span>
                   </blockquote>
-
+                
                   {
     
 
 
     data.map(item => (
-      
 
-       <>
+
+
+      <>
    
-            
-        { <div className="items" key={item.id}>
-         
-        <h2>{item.title}({item.age})</h2>
+        <ul class="list-group" key={item.id}>
+
+        {(() => {
+      if (item.title!=="Ramadan Kareem"  &&  item.title!=="Web Page") {
+        return <>
+        
+
+       <li id="list" class="list-group-item d-flex justify-content-between align-items-center">
+          <i className={item.title}></i>
+             <h2 className="name">{item.content}({item.age}hours)</h2>
+         <span className="badge bg-primary rounded-pill">  <i class="fa-solid fa-arrow-right-arrow-left"></i></span>
+       </li>
+        </>;
+      } else {
+        return <span>{item.falseValue}</span>;
+      }
+    })()}
+
+
+      
+     </ul>
      
-      </div> } 
-               </>
+     
+                    </>  
+
+  
      
     ))}
-{/*                   
-                  <div className="map-ui">
-                    <ul>
-                      <li>
-                        <Link>
-                          <div className="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-                            <a
-                              class="btn link-btn btn-lg"
-                              href="/learn/data-visualization/"
-                            >
-                              
-                            </a>
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div> */}
+ <button className="logout" onClick={logOut}>Logout</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button onClick={logOut}>Logout</button>
+    
 
       <ToastContainer />
     </>

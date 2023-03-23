@@ -19,11 +19,11 @@ const Page1 = () => {
         Since 2014,more than 40,000 freeCodeCamp.org graduates have gotten <br /> jobs at tech companies including 
       </p>
       <div className='p1-icons'>
-    <p className='iconp1'>apple</p>
-    <p className='iconp1'>Google</p>
-    <p className='iconp1'>microsoft</p>
-    <p className='iconp1'>Spotify</p>
-    <p className='iconp1'>amazon</p>
+    <p className='iconp1'><i class="fa-brands fa-apple" style={{color: '#797c81'}}></i></p>
+    <p className='iconp1'><i class="fa-brands fa-google" style={{color: '#797c81'}}></i>oogle</p>
+    <p className='iconp1'><i class="fa-brands fa-microsoft" style={{color: '#797c81'}}></i>Microsoft</p>
+    <p className='iconp1'><i class="fa-brands fa-spotify" style={{color: '#797c81'}}></i>Spotify</p>
+    <p className='iconp1'><i class="fa-brands fa-amazon" style={{color: '#797c81'}}></i>amazon.com</p>
       </div>
      
       <Link to='/register'>

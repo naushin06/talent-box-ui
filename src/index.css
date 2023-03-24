@@ -20,7 +20,11 @@ body {
   padding: 30px 15px 15px;
 
 }
+#i{
+  top: 90px;
+  left: 10px;
 
+}
 h2 {
   margin: 1rem 0;
 }
@@ -89,7 +93,7 @@ span a {
 }
 
 
-.navbar {
+#navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -117,7 +121,7 @@ height: 22px !important;
   text-decoration: none;
   color: #ccc;
 }
-.h-text{
+#h-text{
   background-color: #0a0a23;
 height: 18px;
 width: 300px;;
@@ -125,10 +129,10 @@ padding: 0;
 border: none;
 margin: 0;
 }
-.h-text:focus{
+#h-text:focus{
 outline: none;
 }
-.h-text::placeholder{
+#h-text::placeholder{
 background-color: rgb(59,59,79);
 outline: none;
 border: none;
@@ -162,9 +166,9 @@ border: none;
 .main-page{
       position: absolute;
       top: 33vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 200px;      
+      left: 20%;
+      
+      height: 100vh;      
 }
 /* .container{
   margin-right: auto;
@@ -223,18 +227,30 @@ margin-bottom: 20px;
 }
 .big-heading{
 display: block;
-padding-left: 30%;
 font-family: Lato,sans-serif;
  font-size: 2rem;
-  margin-bottom: 40px;
-
+  
   font-weight: 700;
 min-width: 10px;
 white-space: nowrap;
   line-height: 1.1;
   margin-bottom: 40px;
 }
+.big-headingd{
+  display: block;
+  font-family: Lato,sans-serif;
+   font-size: 2rem;
+    
+    font-weight: 700;
+  min-width: 10px;
+  white-space: nowrap;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  #dashboard{
 
+    width: 100vh;
+  }
 @media (max-width: 500px)
 {
 .big-heading {
@@ -259,165 +275,24 @@ white-space: nowrap;
 {.col-lg-8 {
   width: 66.66666667%;
 }}
-@media (max-width: 1200px)
-{.h-text{
-  display: none;
-  visibility:hidden;
-}
-.navbar{
+
  
-  justify-content: flex-start;
-  padding:1%;
-}
-.right{
-  margin-left: 60vh;
-  justify-content: flex-end;
-  float: left;
-}
-.logo {
-  height: 29px !important;
-  float: right;
-  top: 0%;
-  left: 2%;
-padding: 3%;
-}
-}
-@media (max-width: 790px){
-  .big-heading{
-    margin-left:10vh
-  }
-  .navbar{
-    width:100vh;
-    justify-content: flex-start;
-    padding:1%;
-  }
-  .right{
-    margin-left: 0vh;
-    justify-content: flex-end;
 
-  }
-  .logo {
-    height: 29px !important;
-    float: right;
-    top: 0%;
-    left: 2%;
-  padding: 3%;
-  }
-}
-@media (max-width: 420px){
-  .big-heading{
-    margin-left:10vh
-  }
-  .navbar{
-    width:100vh;
-    justify-content: flex-start;
-    padding:1%;
-  }
-  .right{
-    margin-left: 0vh;
-    justify-content: flex-end;
 
-  }
-  .logo {
-    height: 29px !important;
-    float: right;
-    top: 0%;
-    left: 2%;
-  padding: 3%;
-  }
-}
-@media (max-width: 380px){
-  .navbar{
-    justify-content: flex-start;
-    padding:1%;
-  }
-  .right{
-    margin-left: 0vh;
-    justify-content: flex-end;
-
-  }
-  .logo {
-    height: 29px !important;
-    float: right;
-    top: 0%;
-    left: 2%;
-  padding: 3%;
-  }
+#logo{
+  padding-left: 100%;
 }
 
-/* @media (max-width: 680px){
-  .navbar{
-    white-space: unset;
-    justify-content: flex-start;
-    padding:1%;
-  }
-  .right{
-    padding: 0px;
-    display: inline-flex;
-    margin-left: 20vh;
-    justify-content: flex-end;
 
-  }
-  .center{
-    left: 0%;
- 
-justify-content: flex-start;
-  }
-  .logo {
-    display: inline-flex;
-    height: 30px !important;
-    float: right;
-    top: 0%;
-    left: 2%;
-  padding: 3%;
-  }
-} */
 
-@media (max-width:1350px){
-  .main-btn {
-      font-size: 0.9rem;
-  }
-  }
-@media (min-width: 768px)
-{
-.container {
-    width: 750px;
-}
-}
-.as-seen-in, .certification-section, .landing-top, .testimonials {
-  padding: 4vw 0;
-}
-.register-btn {
-  font-family: 'Roboto Mono', monospace;
-  min-height: 56px;
-  width: 100%;
-  padding: 10px 16px;
-  font-size: 22px;
-  background-color:#d0d0d5;
-  border-width: 3px;
-  border-color:#1b1b32;
-  color: #1b1b32;
-  border-radius: 0px;
-  text-decoration: none;
-  outline: none;
-}
-.register-btn::selection{
-  background-color: white;
-}
 
-.space{
-  padding: 15px 0px; height: 1px;
-}
-.quote-partial .blockquote {
-  border: none;
-  font-size: 1rem;
-}
+
+
+
 blockquote {
   /* padding: 12.5px 25px; */
-  padding-left: 30%;
-  margin: 0 0 20px;
   font-size: 20.5px;
-  width: 100%;
+  width: 80%;
   white-space: unset;
   border-left: 5px solid #eee;
 }
@@ -430,7 +305,7 @@ background-color: #D0D0D5;
 .map-ui ul {
   color: var(--secondary-color);
   list-style: none;
-  padding: 20px;
+  padding: 0px;
   border: 3px solid red;
 
 }

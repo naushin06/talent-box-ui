@@ -40,9 +40,9 @@ export default function Dashboard() {
             navigate("/login");
           } else
           console.log("hii")
-            // toast.error(`Hi`, {
-            //   theme: "dark",
-            // });
+            toast.error(`Hi`, {
+              theme: "dark",
+            });
         }
       };
       verifyUser();
@@ -55,7 +55,6 @@ export default function Dashboard() {
 
  const [data, setData] = useState([]);
   useEffect(() => {
-   
     axios
     .get("http://localhost:4000/talentbox/getDashboardContent")
     .then(function (response) {
@@ -96,17 +95,8 @@ navigate('/register');
 
   return (
     <>
-      <div className="main-page">
-        <div className="wrapper">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-                <h1 class="big-heading" data-test-label="landing-header">
-                  Learn to code — for free.
-                </h1>
-
-                <div className="text-center quote-partial">
-                  <blockquote class="blockquote">
+      <div className="main-page" id="i">
+      <blockquote class="blockquote">
                     <span>
                       <q>
                         The question of whether computers can think is like the
@@ -119,51 +109,40 @@ navigate('/register');
                         <cite>E.W. Dijkstra</cite>
                       </footer>
                   </blockquote>
-                
+
                   {
     
-
+   
 
     data.map(item => (
-
-
-
       <>
-   
-        <ul class="list-group" key={item.id}>
+               
+    <ul  key={item.id}>
 
-        {(() => {
-      if (item.title!=="Ramadan Kareem"  &&  item.title!=="Web Page") {
-        return <>
-        
-
-       <li id="list" class="list-group-item d-flex justify-content-between align-items-center">
-          <i className={item.title}></i>
-             <h2 className="name">{item.content}({item.age}hours)</h2>
-         <span className="badge bg-primary rounded-pill">  <i class="fa-solid fa-arrow-right-arrow-left"></i></span>
-       </li>
-        </>;
-      } else {
-        return <span>{item.falseValue}</span>;
-      }
-    })()}
+{(() => {
+if (item.title!=="Ramadan Kareem"  &&  item.title!=="Web Page") {
+return <>
 
 
-      
-     </ul>
-     
-     
+<li id="list" class="list-group-item d-flex justify-content-between align-items-center">
+  <i className={item.title}></i>
+     <h2 className="name">{item.content}({item.age}hours)</h2>
+ <span className="badge bg-primary rounded-pill">  <i class="fa-solid fa-arrow-right-arrow-left"></i></span>
+</li>
+</>;
+} else {
+return <span>{item.falseValue}</span>;
+}
+})()}
+
+
+
+</ul>
                     </>  
-
-  
-     
     ))}
- <button className="logout" onClick={logOut}>Logout</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                  
+                  <button className="logout" onClick={logOut}>Logout</button>
+     
       </div>
     
 

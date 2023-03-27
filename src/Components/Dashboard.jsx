@@ -3,19 +3,11 @@ import { useNavigate } from "react-router-dom";
 import {cookie,useCookies} from "react-cookie";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-// import CourseList from "./Courses";
 
 export default function Dashboard() {
 
   const navigate=useNavigate();
 
-
-  const [ver, setVer] = useState(null);
-
-  async function fetchData() {
-    const response = await axios.get('https://example.com/api/data');
-    setVer(response.data);
-  }
 
 
  const [cookies,setCookie, removeCookie] = useCookies([]);

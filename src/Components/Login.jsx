@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
@@ -62,6 +63,7 @@ function Login() {
     }
   };
   return (
+    
     <div className="container">
 
       <h2>Login to your Account</h2>
